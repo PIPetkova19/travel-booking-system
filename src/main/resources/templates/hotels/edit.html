@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Hotel</title>
+</head>
+<body>
+<h1>Edit Hotel</h1>
+<form th:action="@{'/hotels/edit/' + ${hotel.id}}" th:object="${hotel}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    Name: <input type="text" th:field="*{name}"/><br/>
+    City: <input type="text" th:field="*{city}"/><br/>
+    Country: <input type="text" th:field="*{country}"/><br/>
+    Price Per Night: <input type="text" th:field="*{pricePerNight}"/><br/>
+    Available Rooms: <input type="text" th:field="*{availableRooms}"/><br/>
+    <button type="submit">Save</button>
+</form>
+<a href="/users">Back to list</a>
+</body>
+</html>

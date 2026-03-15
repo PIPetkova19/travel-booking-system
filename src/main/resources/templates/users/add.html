@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add User</title>
+</head>
+<body>
+<h1>Add User</h1>
+<!--th:action="@{/users/add}" казва на формата къде да изпрати данните при submit; v controller-a -->
+<!--th:object="${user}" казва на формата кой обект ще свържем с полетата. -->
+<!--th:field="*{name}" shortcut за current object, т.е. ${user.name}. -->
+<!--Thymeleaf автоматично генерира: <input type="text" name="name" value=""/> -->
+<form th:action="@{/users/add}" th:object="${user}" method="post">
+    Name: <input type="text" th:field="*{name}"/><br/>
+    Email: <input type="text" th:field="*{email}"/><br/>
+    <button type="submit">Add User</button>
+</form>
+<a href="/users">Back to list</a>
+</body>
+</html>

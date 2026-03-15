@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Reservation</title>
+</head>
+<body>
+<h1>Add Reservation</h1>
+
+<form action="#" th:action="@{/bookings/add}" method="post">
+    <div>
+        <label>User:</label>
+        <select name="userId" required>
+            <option value="" disabled selected>Select User</option>
+            <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name}">User</option>
+        </select>
+    </div>
+
+    <div>
+        <label>Flight:</label>
+        <select name="flightId" required>
+            <option value="" disabled selected>Select flight</option>
+            <option th:each="flight : ${flights}" th:value="${flight.id}"
+                    th:text="${flight.origin + ' -> ' + flight.destination + ' (' + flight.price + ' лв.)'}">
+                Flight
+            </option>
+        </select>
+    </div>
+
+    <div>
+        <label>Hotel:</label>
+        <select name="hotelId" required>
+            <option value="" disabled selected>Select Hotel</option>
+            <option th:each="hotel : ${hotels}" th:value="${hotel.id}"
+                    th:text="${hotel.name + ' (' + hotel.city + ') ' + hotel.pricePerNight + ' лв./нощ'}">
+                Hotel
+            </option>
+        </select>
+    </div>
+
+    <div>
+        <button type="submit">Add Reservation</button>
+        <a href="/bookings">Cancel</a>
+    </div>
+</form>
+
+</body>
+</html>

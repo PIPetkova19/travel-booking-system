@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Reservation</title>
+</head>
+<body>
+<h1>Edit Reservation</h1>
+
+<form th:action="@{/bookings/edit/{id}(id=${booking.id})}" method="post">
+    <div>
+        <label>User:</label>
+        <select name="userId" required>
+            <option value="" disabled>Select User</option>
+            <option th:each="user : ${users}"
+                    th:value="${user.id}"
+                    th:text="${user.name}"
+                    th:selected="${user.id == booking.user.id}">
+                User
+            </option>
+        </select>
+    </div>
+
+    <div>
+        <label>Flight:</label>
+        <select name="flightId" required>
+            <option value="" disabled>Select Flight</option>
+            <option th:each="flight : ${flights}"
+                    th:value="${flight.id}"
+                    th:text="${flight.origin + ' -> ' + flight.destination + ' (' + flight.price + ' лв.)'}"
+                    th:selected="${flight.id == booking.flight.id}">
+                Flight
+            </option>
+        </select>
+    </div>
+
+    <div>
+        <label>Hotel:</label>
+        <select name="hotelId" required>
+            <option value="" disabled>Select Hotel</option>
+            <option th:each="hotel : ${hotels}"
+                    th:value="${hotel.id}"
+                    th:text="${hotel.name + ' (' + hotel.city + ') ' + hotel.pricePerNight + ' лв./нощ'}"
+                    th:selected="${hotel.id == booking.hotel.id}">
+                Hotel
+            </option>
+        </select>
+    </div>
+
+    <div>
+        <button type="submit">Update Reservation</button>
+        <a href="/bookings">Cancel</a>
+    </div>
+</form>
+
+</body>
+</html>

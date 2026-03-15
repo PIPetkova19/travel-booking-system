@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Best Booking</title>
+</head>
+<body>
+
+<h1>Create Best Booking</h1>
+
+<form th:action="@{/bestBookings/add}" method="post">
+
+    <select name="userId">
+        <option th:each="user : ${users}"
+                th:value="${user.id}"
+                th:text="${user.name}">
+        </option>
+    </select>
+    <br>
+
+    Destination:<input type="text" name="destination">
+    <br>
+
+    Max flight price:<input type="number" name="maxFlightPrice">
+    <br>
+
+    Max hotel price:<input type="number" name="maxHotelPrice">
+    <br>
+
+    <button type="submit">Create Best Trip</button>
+</form>
+
+</body>
+</html>
